@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Balance Sheet Calculator</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            
+        <script type="text/javascript">
+            
+            var LiquidTotal;
+            var InvestTotal;
+            var RealTotal;
+            var PersonalTotal;
+            var CurrentTotal;
+            var CreditTotal;
+            var LoansTotal;
+            var TotalAssets;
+            var TotalLiables;
+            var NetWorth;
+            
+            function ValidNum(n)
+            {
+                n = n.replace(/\-/g, '');
+                n = n.replace(/\,/g, '');
+                n = n.replace(/\$/g, '');
+                
+                if (!isNaN(parseFloat(n)) && isFinite(n))
+                {
+                    return parseFloat(n).toFixed(2);
+                }
+                else
+                {
+                    return parseFloat(0.00).toFixed(2);
+                }
+            }
+            
+            function LiquidMath()
+            {
+                var a = ValidNum(document.getElementById("cash").value);
+                var b = ValidNum(document.getElementById("checkings").value);
+                var c = ValidNum(document.getElementById("savings").value);
+                var d = ValidNum(document.getElementById("market").value);
+                var e = ValidNum(document.getElementById("LCD").value);
+                var f = ValidNum(document.getElementById("LiquidOther1").value);
+                var g = ValidNum(document.getElementById("LiquidOther2").value);
+                var h = ValidNum(document.getElementById("LiquidOther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                g = parseFloat(g);
+                h = parseFloat(h);
+                
+                LiquidTotal = a + b + c + d + e + f + g + h;
+                
+                if (isNaN(LiquidTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    //document.getElementById("DisplayLiquidTotal").value = LiquidTotal;
+                    document.getElementById("DisplayLiquidTotal").value = '$' + parseFloat(LiquidTotal).toFixed(2);
+                }
+                
+                return document.getElementById("LiquidTotal").value;
+            }
+            
+            function InvestMath()
+            {
+                var a = ValidNum(document.getElementById("stocks").value);
+                var b = ValidNum(document.getElementById("bonds").value);
+                var c = ValidNum(document.getElementById("ICD").value);
+                var d = ValidNum(document.getElementById("mutual").value);
+                var e = ValidNum(document.getElementById("retire").value);
+                var f = ValidNum(document.getElementById("IOther1").value);
+                var g = ValidNum(document.getElementById("IOther2").value);
+                var h = ValidNum(document.getElementById("IOther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                g = parseFloat(g);
+                h = parseFloat(h);
+                
+                InvestTotal = a + b + c + d + e + f + g + h;
+                
+                if(isNaN(InvestTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayInvestTotal").value = '$' + parseFloat(InvestTotal).toFixed(2);
+                }
+                
+                return document.getElementById("InvestTotal").value;
+            }
+            
+            function RealMath()
+            {
+                var a = ValidNum(document.getElementById("primary").value);
+                var b = ValidNum(document.getElementById("second").value);
+                var c = ValidNum(document.getElementById("ROther1").value);
+                var d = ValidNum(document.getElementById("ROther2").value);
+                var e = ValidNum(document.getElementById("ROther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                
+                RealTotal = a + b + c + d + e;
+                
+                if(isNaN(RealTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayRealTotal").value = '$' + parseFloat(RealTotal).toFixed(2);
+                }
+                
+                return document.getElementById("RealTotal").value;
+            }
+            
+            function PersonalMath()
+            {
+                var a = ValidNum(document.getElementById("PersonalAuto").value);
+                var b = ValidNum(document.getElementById("furnish").value);
+                var c = ValidNum(document.getElementById("vehicles").value);
+                var d = ValidNum(document.getElementById("art").value);
+                var e = ValidNum(document.getElementById("POther1").value);
+                var f = ValidNum(document.getElementById("POther2").value);
+                var g = ValidNum(document.getElementById("POther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                g = parseFloat(g);
+                
+                PersonalTotal = a + b + c + d + e + f + g;
+                
+                if(isNaN(PersonalTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayPersonalTotal").value = '$' + parseFloat(PersonalTotal).toFixed(2);
+                }
+                
+                return document.getElementById("PersonalTotal").value;
+            }
+            
+            function CreditMath()
+            {
+                var a = ValidNum(document.getElementById("card").value);
+                var b = ValidNum(document.getElementById("store").value);
+                var c = ValidNum(document.getElementById("line").value);
+                var d = ValidNum(document.getElementById("CROther1").value);
+                var e = ValidNum(document.getElementById("CROther2").value);
+                var f = ValidNum(document.getElementById("CROther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                
+                CreditTotal = a + b + c + d + e + f;
+                
+                if(isNaN(CreditTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayCreditTotal").value = '$' + parseFloat(CreditTotal).toFixed(2);
+                }
+                
+                return document.getElementById("CreditTotal").value;
+            }
+            
+            function CurrentMath()
+            {
+                var a = ValidNum(document.getElementById("utilities").value);
+                var b = ValidNum(document.getElementById("rent").value);
+                var c = ValidNum(document.getElementById("insurance").value);
+                var d = ValidNum(document.getElementById("repairs").value);
+                var e = ValidNum(document.getElementById("medical").value);
+                var f = ValidNum(document.getElementById("COther1").value);
+                var g = ValidNum(document.getElementById("COther2").value);
+                var h = ValidNum(document.getElementById("COther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                g = parseFloat(g);
+                h = parseFloat(h);
+                
+                CurrentTotal = a + b + c + d + e + f + g + h;
+                
+                if(isNaN(CurrentTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayCurrentTotal").value = '$' + parseFloat(CurrentTotal).toFixed(2);
+                }
+                
+                return document.getElementById("CurrentTotal").value;
+            }
+            
+            function LoansMath()
+            {
+                var a = ValidNum(document.getElementById("education").value);
+                var b = ValidNum(document.getElementById("LoansAuto").value);
+                var c = ValidNum(document.getElementById("RealLoans").value);
+                var d = ValidNum(document.getElementById("appliance").value);
+                var e = ValidNum(document.getElementById("home").value);
+                var f = ValidNum(document.getElementById("LoansOther1").value);
+                var g = ValidNum(document.getElementById("LoansOther2").value);
+                var h = ValidNum(document.getElementById("LoansOther3").value);
+                
+                a = parseFloat(a);
+                b = parseFloat(b);
+                c = parseFloat(c);
+                d = parseFloat(d);
+                e = parseFloat(e);
+                f = parseFloat(f);
+                g = parseFloat(g);
+                h = parseFloat(h);
+                
+                LoansTotal = a + b + c + d + e + f + g + h;
+                
+                if(isNaN(LoansTotal))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayLoansTotal").value = '$' + parseFloat(LoansTotal).toFixed(2);
+                }
+                
+                return document.getElementById("LoansTotal").value;
+            }
+            
+            function AssetsTotal()
+            {
+                TotalAssets = LiquidTotal + InvestTotal + RealTotal + PersonalTotal;
+                
+                if(isNaN(TotalAssets))
+                {
+                    return false;
+                }
+                else
+                {
+                    document.getElementById("DisplayTotalAssets").value = '$' + parseFloat(TotalAssets).toFixed(2);
+                }
+                
+                return document.getElementById("TotalAssets").value;
+            }
+            
+            function LiablesTotal()
+            {
+                TotalLiables = CurrentTotal + CreditTotal + LoansTotal;
+                
+                if(isNaN(TotalLiables))
+                {
+                    return false;
+                }
+                else
+                {
+                    alert("the shit is " + TotalLiables + ".");
+                    document.getElementById("DisplayTotalLiables").value = '$' + parseFloat(TotalLiables).toFixed(2);
+                }
+                
+                return document.getElementById("TotalLiables").value;
+            }
+            
+            function GrandTotal()
+            {
+                NetWorth = TotalAssets - TotalLiables;
+                
+                if(isNaN(NetWorth))
+                {
+                    return false;
+                }
+                else
+                {
+                    alert("the shit is " + NetWorth + ".");
+                    document.getElementById("DisplayNetWorth").value = '$' + parseFloat(NetWorth).toFixed(2);
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div class="container">
+                <div class="row"><br /><br /></div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="tab-content">
+
+                            <h3>Balance Sheet</h3>
+                            <br /><br />
+                            <div id="NameDate" class="row" style="padding:1px;">
+                                <div class="col-xs-1"><h4>Name:</h4></div>
+                                <div class="col-xs-4"><input type="text" id="name" class="form-control" maxlength="20" style="background-color: #FFFFE0;"></div>
+                                <div class="col-xs-1"><h4>Date:</h4></div>
+                                <div class="col-xs-4"><input type="date" id="date" class="form-control" maxlength="20" style="background-color: #FFFFE0;"/></div>
+                            </div>
+                            
+                            <br /><br /><br /><br /><br /><br />
+
+                            <div id="assets" class="col-xs-6"><h3>Assets</h3>
+                                <h4>Liquid Assets</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Cash On Hand: <input type="text" id="cash" onblur="LiquidMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Checking Account: <input type="text" id="checkings" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Savings Account: <input type="text" id="savings" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Money Market Fund: <input type="text" id="market" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">CD Less Than One Year: <input type="text" id="LCD" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LiquidOther1" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LiquidOther2" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LiquidOther3" onblur="LiquidMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayLiquidTotal" onblur="LiquidMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <br /><br /><br /><br />
+
+                                <h4>Investments</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Stocks: <input type="number" id="stocks" onblur="InvestMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Bonds: <input type="number" id="bonds" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">CD More Than One Year: <input type="number" id="ICD" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Mutual Funds: <input type="number" id="mutual" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Retirement Funds, IRA: <input type="number" id="retire" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="IOther1" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="IOther2" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="IOther3" onblur="InvestMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayInvestTotal" onblur="InvestMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <br /><br /><br /><br />
+
+                                <h4>Real Property</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Primary Home: <input type="number" id="primary" onblur="RealMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Second Home: <input type="number" id="second" onblur="RealMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="ROther1" onblur="RealMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="ROther2" onblur="RealMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="ROther3" onblur="RealMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayRealTotal" onblur="RealMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <br /><br /><br /><br />
+
+                                <h4>Personal Property</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Auto: <input type="number" id="PersonalAuto" onblur="PersonalMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Household Furnishings: <input type="number" id="furnish" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Recreational Vehicles: <input type="number" id="vehicles" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Jewelry or Art: <input type="number" id="art" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="POther1" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="POther2" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="POther3" onblur="PersonalMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayPersonalTotal" onblur="PersonalMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                            </div>
+
+                            <div id="liables" class="col-xs-6"><h3>Liabilities</h3>
+                                <h4>Current Liabilities (due within 1 month)</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Utilities: <input type="number" id="utilities" onblur="CurrentMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Rent: <input type="number" id="rent" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Insurance Premiums: <input type="number" id="insurance" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Repairs: <input type="number" id="repairs" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Medical or Dental: <input type="number" id="medical" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="COther1" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="COther2" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="COther3" onblur="CurrentMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayCurrentTotal" onblur="CurrentMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <br /><br /><br /><br />
+                                
+                                <h4>Long-Term Liabilities</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Education Loans: <input type="text" id="education" onblur="LoansMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Auto Loans: <input type="text" id="LoansAuto" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Real Estate Loans: <input type="text" id="RealLoans" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Appliance Loans: <input type="text" id="appliance" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Home Improvement Loans: <input type="text" id="home" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LoansOther1" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LoansOther2" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="text" id="LoansOther3" onblur="LoansMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayLoansTotal" onblur="LoansMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <br /><br /><br /><br />
+                                
+                                <h4>Revolving Credit (current balance)</h4>
+                                <div class="row" style="padding:1px;">
+                                    <div class="col-xs-8">Credit Card Balance: <input type="number" id="card" onblur="CreditMath()" oninput="AssetsTotal(); LiablesTotal(); GrandTotal();" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Store Credit: <input type="number" id="store" onblur="CreditMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Activated Line of Credit: <input type="number" id="line" onblur="CreditMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="CROther1" onblur="CreditMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="CROther2" onblur="CreditMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Other: <input type="number" id="CROther3" onblur="CreditMath()" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                    <div class="col-xs-8">Total: <input type="text" id="DisplayCreditTotal" onblur="CreditMath()" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="padding:100px;"></div>
+
+                            <div class="row" style="padding:1px;">
+                                <div class="col-xs-8">
+                                    <div class="col-xs-8"><h4>Total Assets:</h4> <input type="text" id="DisplayTotalAssets" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+
+                                <div class="col-xs-8">
+                                    <div class="col-xs-8"><h4>Total Liabilities:</h4> <input type="text" id="DisplayTotalLiables" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                                
+                                <div class="col-xs-8">
+                                    <div class="col-xs-8"><h4>Net Worth:</h4> <input type="text" id="DisplayNetWorth" readonly="readonly" class="form-control" maxlength="30" style="background-color: #FFFFE0;"/></div>
+                                </div>
+                            </div>
+                            
+                            <br /><br />
+                            
+                            <asp:LinkButton ID="btnSave1" runat="server" CssClass="btn btn-primary" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> Save </asp:LinkButton>  &nbsp;
+                            <input id="ClearBtn" type="button" value="Clear" class="btn btn-primary" />
+                            &nbsp; &nbsp; &nbsp;
+                            <asp:CheckBox ID="chkProgress" runat="server" Text="&nbsp; Balance Sheet Calculator completed" Font-Bold="True" AutoPostBack="True" />
+
+                            <div id="menu2" class="tab-pane fade"><h3>&nbsp;</h3></div>
+                            <asp:TextBox ID="txtRecommendation" runat="server" Height="120px" onkeyup="charcountupdate()" TextMode="MultiLine" MaxLength="975"></asp:TextBox>
+                            <span id=charcount1></span>
+                            <br />
+                            <asp:Label ID="lblSave" runat="server" ForeColor="#006600" Font-Bold="True" Font-Italic="False"></asp:Label>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
